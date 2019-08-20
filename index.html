@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-learning</title>
+
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <script src="js/script.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light align-content-around"
+     style="padding-left: 9%; padding-right: 9%">
+
+    <div>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+
+
+        </button>
+
+
+        <a class="navbar-brand" onclick="getRecentposts()">
+
+
+            E-learning
+
+
+        </a>
+    </div>
+
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto mr-auto">
+
+
+            <li class="nav-item ">
+
+                <form class="form-inline my-0">
+                    <input class="form-control " type="search" list="sgt" id="sin"  placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="search()">Search</button>
+                </form>
+
+                <datalist id="sgt">
+
+                </datalist>
+
+                <script>
+                    showSuggestion();
+                </script>
+
+
+            </li>
+
+
+        </ul>
+    </div>
+
+
+    <div class="form-inline my-2 my-lg-0" id="options">
+
+        <div class="collapse navbar-collapse">
+            <ul id="ldiv" class="navbar-nav mr-auto">
+
+
+                <!--<li class="nav-item "><a class="nav-link" href="/Home/About">About</a></li>-->
+                <!--<li class="nav-item "><a class="nav-link" href="/Home/Contact">Contact</a></li>-->
+
+                <!--<li class="nav-item "><button class="nav-link" data-toggle="modal"  data-target="exampleModal">Log In </button></li>-->
+
+                <li class="nav-item ">
+
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+                        Log In
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#signup">
+                        Sign Up
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+
+<br>
+<br>
+<br>
+
+<div id="message">
+
+</div>
+
+
+<div class="container">
+    <div id="r1" class="row">
+
+
+        <div id="div1" class="col-8 jumbotron">
+
+
+            <div id="td">
+
+            <div class="card">
+
+
+                <div>
+                    <h4 class="card-header">Something new in mind ? Write here. </h4>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="card">
+
+
+                <div>
+
+
+                    <p id="input_article" class="card-body">
+
+                        <input type="text" placeholder="Topic Name" style="height: 40px; size: 60px;" class="text-info">    <select style="height: 40px" class="text-info" > <option>Technology</option>  <option>Database</option> </select>
+                        <textarea style="width: 100%;" class="text-info form-control-lg" type="text"
+                                  placeholder="Write Details here."> </textarea>
+
+                        <button class="btn-primary" onclick="postArticle()">POST</button>
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+            </div>
+
+
+
+            <div id="recent_posts">
+
+
+                <div id="postname">
+                    <div class="card">
+                        <div>
+                            <h4 class="card-header">Adam Ali </h4>
+                            <p class="card-body">
+                                ghh dfg gdfg dfgd fgd fg dfg df gdfg df g dfg df gd f. dfgdf gd fg df gd fg df g df gd
+                                fg d fg df g df gd fg df g d
+                                .df g df gd fg d fg df g df g df g df gd fg f gd f g df gd f gdf g g g g ggg.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <p class="card-body">
+                                <textarea id="post" style="width: 100%;" class="text-info d-inline-block" type="text"
+                                          placeholder="Comments will be here"> </textarea>
+                                <button class="btn-primary" onclick="comment(document.findElementById('postname').findElementByTagName('textarea').value,'postname')">Comment</button>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <script>
+                getRecentposts();
+            </script>
+
+
+        </div>
+
+
+        <div id="div2" class="col-4 jumbotron">
+
+
+
+            <div class="card">
+
+
+                <div>
+
+                    <h4 class="card-header"> Trending news</h4>
+
+
+                    <br>
+
+                    <p class="card-body">kjdf akdfbkdf adfkdf afkfj adbfgkdfg dafbgkdfbgj dfg dfg df g dfg dfg df gd
+                        fgggg dfg d fg d </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="card">
+
+
+                <div>
+
+                    <h4 class="card-header"> Trending news</h4>
+
+
+                    <br>
+
+                    <p class="card-body">kjdf akdfbkdf adfkdf afkfj adbfgkdfg dafbgkdfbgj dfg dfg df g dfg dfg df gd
+                        fgggg dfg d fg d </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="card">
+
+
+                <div>
+
+                    <h4 class="card-header"> Trending news</h4>
+
+
+                    <br>
+
+                    <p class="card-body">kjdf akdfbkdf adfkdf afkfj adbfgkdfg dafbgkdfbgj dfg dfg df g dfg dfg df gd
+                        fgggg dfg d fg d </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+</div>
+
+
+<!--modals-->
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title " id="exampleModalLabel">Log in</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+
+            </div>
+
+
+            <div class="modal-body">
+
+
+                <div id="m1" class="col-12 text-center">
+
+
+                    <!--<h2 class="bg-primary text-white rounded">Log in</h2>-->
+                    <div class="card"
+                         style="width: 100%; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px">
+
+
+                        <div>
+
+                            <div>
+                                <div>
+
+                                    <div class="form-group">
+                                        <input class="form-control-lg" type="text" id="txtUser" placeholder="ID">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control-lg" type="password" id="txtPassword"
+                                               placeholder="password">
+
+                                    </div>
+                                    <label onclick="" data-toggle="tooltip" data-html="true" title=""
+                                           style="padding-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px"
+                                           class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="" id="iamdoc">
+                                        I am a Teacher
+                                    </label>
+
+                                    <br><label class="text-danger" id="errorInLoggingIn"></label>
+
+                                    <div>
+                                        <button class="btn btn-primary" id="btnLogin" onclick="login()">login</button>
+                                        <p>
+                                            Not registered? <a href="#" onclick="$('#signup').modal('show');">Create an
+                                            account</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title " >Sign up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+
+            </div>
+
+
+            <div class="modal-body">
+
+
+                <div class="col-12 text-center">
+
+
+                    <!--<h2 class="bg-primary text-white rounded">Log in</h2>-->
+
+                    <div class="card"
+                         style="width: 100%; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px">
+
+
+                        <div>
+
+                            <div>
+                                <div>
+
+                                    <div class="form-group">
+                                        <input class="form-control-lg" type="text" id="name" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control-lg" type="number" id="id" maxlength="2" size="2"
+                                               placeholder="ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control-lg" list="ut" type="text" id="usertype"
+                                               placeholder="User type"
+                                        >
+
+
+                                        <datalist id="ut">
+                                            <option value="Undergrad">
+                                            <option value="Grad">
+                                            <option value="Lecturer">
+                                            <option value="Professor">
+
+                                        </datalist>
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input class="form-control-lg" type="email" id="email" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control-lg" id="phone" placeholder="phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control-lg" type="password" id="password"
+                                               placeholder="password">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <select id="gender" class="form-control-lg" onchange="">
+                                            <option>Male</option>
+                                            <option>Female</option>
+
+                                        </select>
+                                    </div>
+
+                                    <label onclick="" data-toggle="tooltip" data-html="true" title=""
+                                           style="padding-bottom: 20px; padding-left: 20px; padding-right: 20px; padding-top: 20px"
+                                           class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name=""
+                                               id="iamt">
+                                        I am a Teacher
+                                    </label>
+
+                                    <br><label class="text-danger" id="errorInSigningUp"></label>
+
+
+                                    <div>
+                                        <button class="btn btn-primary" id="sign" onclick="signup()">Sign Me Up</button>
+                                        <p>Already have an account? <a href="#"
+                                                                       onclick="$('#signup').modal('hide');$('#login').modal('show');">Log
+                                            In</a></p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+</div>
+
+
+</body>
+
+<script>
+    showNews();
+</script>
+</html>
